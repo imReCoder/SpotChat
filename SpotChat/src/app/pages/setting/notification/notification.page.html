@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button   text=""></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Notification</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<ion-list>
+
+  <ion-item >
+  <ion-icon name="notifications"></ion-icon>
+  <ion-label>Notification <p>Get notification for new messages</p></ion-label>
+  <ion-toggle [(ngModel)]="notificationToggle" (ionChange)="toggleNotification()"  color="primary"></ion-toggle>
+  </ion-item>
+
+    <ion-item >
+      <ion-icon name="volume-high"></ion-icon>
+    <ion-label>Sound <p>Play sound on Notification</p></ion-label>
+    <ion-toggle [(ngModel)]="notificationSoundToggle"  (ionChange)="toggleNotification()"  color="primary"></ion-toggle>
+    </ion-item>
+</ion-list>
+
+</ion-content>

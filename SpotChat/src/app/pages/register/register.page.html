@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login / SignUp</ion-title>
+  <ion-buttons slot="end" (click)='closeModal()'>
+    Cancel
+ </ion-buttons>
+</ion-toolbar>
+
+</ion-header>
+
+<ion-content *ngIf='verifyB!=true'>
+
+  <div class="main">
+  <ion-label class='text'>Login/Signup</ion-label>
+  <ion-item class='phoneInput'>
+<ion-label class='countryCode'><img src="./assets/images/indian.png" alt="">+91</ion-label>
+<ion-input type="text" #mobileIn   placeholder='Mobile Number' [(ngModel)]="mobile"></ion-input>
+</ion-item>
+</div>
+
+</ion-content>
+
+<ion-content *ngIf='verifyB==true' class='verify'>
+
+    <div id="dialog">
+      <h4>Please enter the 4-digit verification code we sent via SMS to {{mobile}}:</h4>
+      <ion-row class='ion-text-center'>
+        <ion-col>
+         <ion-input [(ngModel)]="a" #otp1 required maxLength="1" (keyup)="otpController($event,otp2,'')">
+         </ion-input>
+         <ion-input [(ngModel)]="b" #otp2 required maxLength="1" (keyup)="otpController($event,otp3,otp1)">
+         </ion-input>
+         <ion-input [(ngModel)]="c" #otp3 required maxLength="1" (keyup)="otpController($event,otp4,otp2)">
+         </ion-input>
+         <ion-input [(ngModel)]="d" #otp4  required maxLength="1" (keyup)="otpController($event,'',otp3)">
+         </ion-input>
+        </ion-col>
+      </ion-row>
+
+      <div class='timer'>
+        <ion-label>00</ion-label><ion-label>:</ion-label><ion-label>{{seconds}}</ion-label>
+      </div>
+        </div>
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand='full'  (click)="sendOTP()">Login/SignUp</ion-button>
+  </ion-toolbar>
+</ion-footer>

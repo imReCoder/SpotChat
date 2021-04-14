@@ -1,0 +1,80 @@
+
+.spinner{
+  --color:white;
+  width:20px;
+}
+.info{
+  margin-left:10px
+}
+.contactName{
+  position:relative;
+  bottom:-10px;
+}
+
+ion-virtual-scroll{
+//  margin:0;
+  padding:1px;
+//  border:solid green;
+  margin-top:-13px;
+}
+
+ion-item{
+  --background:var(--item-background);
+  strong{
+  color:var(--item-text-color-large);
+  }
+
+  p{
+    color:var(--item-text-color-small) !important;
+  }
+
+  margin-bottom:-10px;
+
+}
+
+ion-avtar{
+  width:5px !important;
+}
+
+ion-searchbar{
+  margin-bottom:3px;
+  color:var(--color-input-text);
+  background: var(--color-input);
+}
+
+.nav {
+  //animation-duration: 0.4s;
+  //animation-name: slidein;
+}
+
+
+.search {
+//  animation-duration: 0.4s;
+  //animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: -100%;
+    width: 100%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+.contactS{
+  background-color:var(--item-text-color-tag);
+  padding:5px;
+  //border:solid red;
+  font-size:13px;
+  padding-left:9px;
+  margin-top:-0px;
+}
+
+.spinnerC{
+  --color:#3880ff;
+  text-align:center;
+}

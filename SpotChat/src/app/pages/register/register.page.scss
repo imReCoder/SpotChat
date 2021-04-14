@@ -1,0 +1,67 @@
+.phoneInput{
+  margin-top:20px;
+  margin-right:35px;
+  margin-left:20px;
+
+  font-size:20px
+}
+
+.main{
+  text-align: left;
+padding-top:30px
+}
+.text{
+  font-weight: bold;
+  font-size: 20px;
+  margin-left:20px ;
+}
+
+.countryCode{
+  border-right:solid 2px;
+  padding-right:5px
+}
+
+ion-label{
+  img{
+    height:13px;
+    margin-right:2px;
+  }
+}
+.alert-wrapper{
+  background-color: red !important;
+}
+
+
+.verify{
+ion-input{
+ display:inline-block;
+ width:50px;
+ height:50px;
+ margin:10px;
+font-size:20px;
+ --background:#e1e1e1;
+ --padding-start:7px;
+ }
+
+
+   #dialog {
+     margin: 10px auto;
+     padding: 20px 30px;
+       h3 {
+       margin: 0 0 10px;
+       padding: 0;
+       line-height: 1.25;
+     }
+
+     span {
+       font-size: 90%;
+     }
+   }
+
+.timer{
+  text-align:center;
+  color:green;
+  font-size:13px
+
+}
+}

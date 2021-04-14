@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button ></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="">
+      <ion-avatar>
+        <ion-img src="{{user.userAvatar}}"></ion-img>
+        <ion-icon (click)="presentActionSheetProfile()" class="cam-icon"  name="camera"></ion-icon>
+      </ion-avatar>
+
+  <ion-list class="status" line="none">
+        <div class="item">
+        <ion-label>Name</ion-label>
+          <ion-item>
+            <ion-icon class="start-icon" slot="start" name="person"></ion-icon>
+            <ion-text >{{user.userName}}</ion-text>
+          <ion-button (click)="changeName()"  slot="end" fill="clear">  <ion-icon  class="end-icon" name="create"></ion-icon></ion-button>
+          </ion-item>
+        </div>
+
+        <div class="item">
+          <ion-label>Status</ion-label>
+          <ion-item>
+              <ion-icon class="start-icon" slot="start" name="information-circle"></ion-icon>
+              <ion-text >{{user.userAbout}}</ion-text>
+              <ion-button (click)="changeAbout()" slot="end" fill="clear">  <ion-icon  class="end-icon" name="create"></ion-icon></ion-button>
+            </ion-item>
+          </div>
+
+          <div class="item">
+            <ion-label>Phone</ion-label>
+            <ion-item>
+                <ion-icon class="start-icon" slot="start" name="call"></ion-icon>
+                <ion-text >+91{{user.userPhone}}</ion-text>
+                <ion-button (click)="changePhone()" slot="end" fill="clear">  <ion-icon  class="end-icon" name="create"></ion-icon></ion-button>
+              </ion-item>
+            </div>
+          </ion-list>
+
+
+</ion-content>

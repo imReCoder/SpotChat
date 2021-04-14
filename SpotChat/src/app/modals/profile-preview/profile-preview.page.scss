@@ -1,0 +1,47 @@
+.backBtn{
+  position:absolute;
+  color:white;
+}
+
+.name{
+  position:relative;
+  color:white;
+  bottom:39px;
+  font-size:30px
+}
+
+
+ion-icon{
+  margin-right:10px;
+  color:var(--color-icon);
+
+}
+
+
+ion-title{
+//  border:solid red;
+  background-color:rgba(194, 223, 255,0.3);
+}
+ion-item {
+  --background:var(--item-background);
+
+h2{
+  color:var(--item-text-color-large);
+}
+
+ion-label{
+  p{
+    color:var(--item-text-color-small);
+  }
+      color:var(--item-text-color-large);
+}
+
+  p{
+    color:var(--item-text-color-small) !important;
+  }
+}
+
+avatar{
+text-align:center;
+  border:solid red;
+}

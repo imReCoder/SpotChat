@@ -1,0 +1,85 @@
+<ion-header class="header" *ngIf="searchH">
+  <ion-toolbar [color]="toolColor" class="nav">
+        <ion-buttons>
+          <ion-button *ngIf="!search" (click)="closeModal()"><ion-icon name="arrow-back" ></ion-icon></ion-button>
+          <ion-title *ngIf="!search">Contacts</ion-title>
+          <ion-spinner *ngIf="refreshStatus=='on' && !search" class="spinner" name="crescent"></ion-spinner>
+          <ion-button *ngIf="!search" (click)="searchToggle()" ><ion-icon name="search"></ion-icon></ion-button>
+
+          <ion-button *ngIf="refreshStatus!='on' && !search" (click)="refreshContacts()"><ion-icon name="refresh"></ion-icon></ion-button>
+          <ion-button (click)="addContact()" *ngIf="!search"><ion-icon name="add" ></ion-icon></ion-button>
+
+          </ion-buttons>
+
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-searchbar class='search' *ngIf="search"
+  hideCancelButton="false"
+  showCancelButton="always"
+  (ionCancel)="cancelSearch()"
+ (ionChange)="filterList($event)"
+  placeholder="Search Contacts" #searchBar animated
+  >
+  </ion-searchbar>
+
+<div class="main">
+
+<p class="contactS">Contacts on SpotChat</p>
+
+<div  class="spinnerC"  *ngIf="spotContacts">
+  <ion-spinner name="bubbles"></ion-spinner>
+</div>
+
+  <div class="noSpot" style="text-align:center">
+    <ion-text *ngIf="noSpotContacts">No Contacts on SpotChat Invite now</ion-text>
+  </div>
+
+
+<ion-virtual-scroll [items]="goalList" *ngIf="!noSpotContacts" [trackBy]="identify" >
+     <ion-item lines="none" *virtualItem="let contact ;let i=index"  >
+       <ion-avatar *ngIf="contact.image && contact.phone" (load)="imgLoadedS=true" [hidden]="!imgLoadedS" (click)="viewProfile(contact)" item-start>
+         <img [src]="contact.image">
+       </ion-avatar>
+       <ion-avatar [hidden]='imgLoadedS' item-start>
+         <img src="../assets/images/profile.png" >
+       </ion-avatar>
+       <div class="info" (click)="goforChat(contact)" *ngIf="contact.phone">
+         <strong class="contactName"> {{contact.name}}</strong>
+         <br>
+       <p>{{contact.phone}}</p>
+     </div>
+     <ion-button *ngIf="contact.phone" slot="end" (click)="deleteFromSpotContacts(contact,i)" fill="clear"><ion-icon name="trash" style="color:lightgrey"></ion-icon></ion-button>
+
+     </ion-item>
+     </ion-virtual-scroll>
+
+   <p class="contactS">Your Contacts</p>
+
+   <div  class="spinnerC"  *ngIf="!goalListR">
+     <ion-spinner name="bubbles"></ion-spinner>
+   </div>
+
+<ion-virtual-scroll [items]="goalListR" [trackBy]="identifyC">
+      <ion-item lines="none" *virtualItem="let contact;let i=index" >
+        <ion-avatar  [hidden]='!imgLoadedC' item-start>
+          <img [src]="contact.image" (load)="imgLoadedC=true">
+        </ion-avatar>
+        <ion-avatar  [hidden]='imgLoadedC' item-start>
+          <img src="../assets/images/profile.png">
+        </ion-avatar>
+        <div class="info" (click)="invite(contact,i)">
+          <strong class="contactName"> {{contact.name}}</strong>
+          <br>
+        <p>{{contact.phone}}</p>
+      </div>
+      <ion-button slot="end" color="primary" (click)='invite(contact,i)'>Invite</ion-button>
+
+      </ion-item>
+      </ion-virtual-scroll>
+
+    </div>
+
+</ion-content>

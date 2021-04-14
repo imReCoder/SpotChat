@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" >
+      <ion-back-button  text=""></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+
+
+  <ion-list>
+<ion-item routerLink="/setting-profile">
+<ion-icon name="person"></ion-icon><ion-label>Profile</ion-label>
+</ion-item>
+<ion-item routerLink="/theme">
+<ion-icon name="contrast-outline"></ion-icon><ion-label>App Theme</ion-label>
+</ion-item>
+
+
+<ion-item  routerLink="/setting-notification">
+<ion-icon name="notifications"></ion-icon>
+<ion-label>Notification</ion-label>
+</ion-item>
+
+<ion-item >
+<ion-icon name="eye-off"></ion-icon>
+<ion-label>Privacy</ion-label>
+</ion-item>
+
+<ion-item>
+<ion-icon name="call"></ion-icon>
+<ion-label>Change Phone</ion-label>
+</ion-item>
+</ion-list>
+
+<div class="footer">
+  <ion-button fill="clear" expand="full"  color="danger" (click)="logOutConfirmAlert()">Logout</ion-button>
+</div>
+
+
+</ion-content>

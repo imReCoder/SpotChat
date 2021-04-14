@@ -1,0 +1,33 @@
+
+
+<ion-content>
+  <ion-buttons class="backBtn">
+    <ion-button (click)="closeModal()"><ion-icon name="arrow-back" color="white"></ion-icon></ion-button>
+  </ion-buttons>
+
+<div class="avatar">
+  <img src={{profileImg}} (load)="profileImgP=true" [hidden]="!profileImgP">
+  <img src="../assets/images/profile.png" [hidden]="profileImgP">
+
+  <ion-title class="name">{{name}}</ion-title>
+</div>
+
+
+  <ion-list lines="none">
+    <ion-item >
+    <ion-icon name="call"></ion-icon>
+    <ion-label>Phone
+      <p>{{phone}}</p>
+
+    </ion-label>
+    </ion-item>
+    <ion-item >
+    <ion-icon name="information-circle"></ion-icon>
+    <ion-label>Status
+      <p>{{status}}</p>
+
+    </ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

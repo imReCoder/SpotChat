@@ -1,0 +1,7 @@
+{
+  "name": "SpotChat",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

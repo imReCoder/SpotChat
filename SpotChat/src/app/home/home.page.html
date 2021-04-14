@@ -1,0 +1,148 @@
+<ion-header slot="top" class="ion-no-border header"  no-border>
+  <ion-toolbar color="primary" class="ion-nav">
+    <ion-title color="light">
+    <b *ngIf="!delete">SpotChat</b>
+    <ion-icon (click)="cancelSelect()" *ngIf="delete"   name="arrow-back"></ion-icon>
+    <b class="length"> {{selectLength}}</b>
+    <ion-icon class="trash-icon" *ngIf="delete" (click)="deleteChatL()"  name="trash"></ion-icon>
+    <ion-button  *ngIf="!delete"  class="setting-icon" fill="clear" routerLink="/setting-home"  >
+      <ion-icon   name="settings"></ion-icon>
+    </ion-button>
+
+  </ion-title>
+</ion-toolbar>
+</ion-header>
+<super-tabs class="dark" activeTabIndex="0"  [config]="{ debug: false, sideMenu: 'left', allowElementScroll: true, transitionDuration: 200, shortSwipeDuration: 200 }">
+
+
+  <super-tabs-toolbar slot="top">
+
+    <super-tab-button>
+      <ion-label>Chat</ion-label>
+    </super-tab-button>
+    <super-tab-button>
+      <ion-label>Groups</ion-label>
+    </super-tab-button>
+    <super-tab-button>
+      <ion-label>Status</ion-label>
+    </super-tab-button>
+  </super-tabs-toolbar>
+
+  <super-tabs-container>
+<!--tab1 chat -->
+    <super-tab class="tab1">
+      <ion-content >
+        <ion-list *ngIf="chatDataLoading">
+             <ion-item *ngFor="let fake of fakeUsers">
+               <ion-avatar slot="start">
+                 <ion-skeleton-text animated></ion-skeleton-text>
+               </ion-avatar>
+               <ion-label>
+                 <h3>
+                   <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+                 </h3>
+                 <p>
+                   <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                 </p>
+                 <p>
+                   <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                 </p>
+               </ion-label>
+             </ion-item>
+           </ion-list>
+            
+          <ion-list  class='no-padding' *ngIf="chatDataPresent && !chatDataLoading && chatData">
+          <ion-item *ngFor="let chat of chatData ;let i=index " [color]="currentSelected[i] ? 'light' : ''"  ion-long-press
+        (press)="pressed(chat,i)"
+          class="selected" >
+            <ion-avatar class="chatImage" slot="start"  (click)="viewProfile(chat)">
+              <img *ngIf="chat.image" [src]="chat.image"  (load)="loaded=true" [hidden]='!loaded'  >
+              <ion-img  src="../assets/images/profile.png" [hidden]='loaded'></ion-img>
+
+            </ion-avatar>
+            <ion-label  (click)="goforChat(chat,i)">
+              <div class="withcount">
+                <div class="nameAvatar">
+                  <h2 *ngIf="chat.name!=='undefined'">{{chat.name}}
+                  </h2>
+                  <h2 *ngIf="!chat.name || chat.name=='undefined'">{{chat.phone}}
+                  </h2>
+
+                  <ion-avatar class="chatCount" *ngIf="chat.count">{{chat.count}}</ion-avatar>
+                </div>
+
+                <div class="timeEnd">
+                  <ion-text slot="end" >{{chat.time}}</ion-text>
+                </div>
+              </div>
+              <p class="widthHalf"><ion-icon *ngIf="chat['deliveredAll']" name="checkmark" class="first-tick"></ion-icon><ion-icon class="second-tick" *ngIf="chat['deliveredAll']" name="checkmark"></ion-icon>{{chat.description}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+        <div class="noChat-wrapper"  *ngIf="!chatDataPresent">
+          <ion-img class="chat-logo" src='../../assets/images/chat-logo.png' ></ion-img>
+          <ion-label color="primary" fill="outline" class="noChat">Start Chating <br>your friends are waiting for you.</ion-label>
+        </div>
+
+        <!-- </content> -->
+        <!-- fab placed to the bottom end -->
+         <ion-fab class='fabBtn' vertical="bottom" horizontal="end" slot="fixed">
+           <ion-fab-button (click)="presentModalContacts()" >
+             <ion-icon name="chatbubbles"></ion-icon>
+           </ion-fab-button>
+         </ion-fab>
+      </ion-content>
+    </super-tab>
+<!-- tab1 chat finsih here -->
+
+<!--tab2 groups starts here-->
+<super-tab class="tab2">
+  <ion-content>
+        <div class="center">
+          <ion-icon name="trending-up"></ion-icon>
+          <h3>Coming Soon..</h3>
+        </div>
+      </ion-content>
+    </super-tab>
+    <!--tab2 groups ends here -->
+
+    <!--tab3 status ends here -->
+    <super-tab class="tab3">
+      <ion-content>
+
+     <ion-list lines="none">
+      <ion-item>
+        <ion-avatar>
+          <ion-img *ngIf="userData.userAvatar" src="{{userData.userAvatar}}"   ></ion-img>
+          <ion-icon *ngIf="userData.userAvatar" class="add" name="add"></ion-icon>
+
+          <ion-img *ngIf="!userData.userAvatar " src="./../assets/images/profile.png"   ></ion-img>
+          <ion-icon *ngIf="!userData.userAvatar" class="add" name="add"></ion-icon>
+        </ion-avatar>
+        <ion-label>My Status
+          <p>Tap to add status</p>
+        </ion-label>
+      </ion-item>
+      </ion-list>
+      <div class="center">
+        <ion-icon name="trending-up"></ion-icon>
+        <h3>Coming Soon..</h3>
+      </div>
+<!--
+      <ion-list class="status-list">
+        <p class='fs'><ion-text >Friends Status</ion-text></p>
+      <ion-item >
+        <ion-avatar class="avatar">
+          <ion-img src="./../assets/images/noimg.png"   ></ion-img>
+
+        </ion-avatar>
+        <ion-label>Raja
+          <p>Today, 1:00 pm</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>-->
+  </ion-content>
+</super-tab>
+<!-- tab3 status end here-->
+</super-tabs-container>
+</super-tabs>

@@ -1,0 +1,21 @@
+p{
+  font-size:10px
+}
+ion-list{
+  padding:1px
+}
+ion-item{
+  --background:var(--item-background);
+ion-label{
+color:var(--item-text-color-large);
+}
+
+p{
+  color:var(--item-text-color-small) !important;
+}
+}
+
+ion-icon{
+  margin-right:10px;
+  color:var(--color-icon);
+}

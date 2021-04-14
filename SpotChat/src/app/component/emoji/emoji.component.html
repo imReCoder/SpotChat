@@ -1,0 +1,96 @@
+
+<ion-content>
+
+<div class="mainPanel">
+  <div class="intercom-composer-popover-header">
+    <ion-segment   [(ngModel)]="segment"  scrollable="true" >
+      <ion-segment-button value="0" >
+        ⌚
+      </ion-segment-button>
+      <ion-segment-button value="1">
+      😃
+        </ion-segment-button>
+        <ion-segment-button value="2">
+        🖐️
+        </ion-segment-button>
+        <ion-segment-button value="3">
+          🐨
+          </ion-segment-button>
+          <ion-segment-button value="4">
+            🍎
+          </ion-segment-button>
+          <ion-segment-button value="5">
+          🎁
+            </ion-segment-button>
+            <!-- <ion-segment-button value="6">
+            🏳
+              </ion-segment-button> -->
+              <ion-segment-button value="7">
+                🌎
+                </ion-segment-button>
+              <ion-segment-button value="8">
+                🔝
+                </ion-segment-button>
+
+
+    </ion-segment>
+  </div>
+
+
+
+      <div class="intercom-emoji-picker-group" *ngIf="segment==0" >
+        <span class="" *ngFor="let emoji of emojis[0].frequent">
+          <span class="intercom-emoji-picker-emoji" (click)="pickedEmoji(emoji.emoji)" title="thumbs_up">{{emoji.emoji}}</span>
+        </span>
+    </div>
+
+<div class="intercom-emoji-picker-group" *ngIf="segment==1" >
+  <span class="" *ngFor="let emoji of emojis[0].people">
+    <span class="intercom-emoji-picker-emoji" (click)="pickedEmoji(emoji.emoji)" title="thumbs_up">{{emoji.emoji}}</span>
+  </span>
+</div>
+
+<div class="intercom-emoji-picker-group" *ngIf="segment==2" >
+  <span class="" *ngFor="let emoji of emojis[0].body">
+    <span class="intercom-emoji-picker-emoji" (click)="pickedEmoji(emoji.emoji)" title="thumbs_up">{{emoji.emoji}}</span>
+  </span>
+</div>
+
+<div class="intercom-emoji-picker-group" *ngIf="segment==3" >
+  <span class="" *ngFor="let emoji of emojis[0].animals">
+    <span class="intercom-emoji-picker-emoji" (click)="pickedEmoji(emoji.emoji)" title="thumbs_up">{{emoji.emoji}}</span>
+  </span>
+</div>
+
+<div class="intercom-emoji-picker-group" *ngIf="segment==4" >
+  <span class="" *ngFor="let emoji of emojis[0].food">
+    <span class="intercom-emoji-picker-emoji" (click)="pickedEmoji(emoji.emoji)" title="thumbs_up">{{emoji.emoji}}</span>
+  </span>
+</div>
+
+<div class="intercom-emoji-picker-group" *ngIf="segment==5" >
+  <span class="" *ngFor="let emoji of emojis[0].objects">
+    <span class="intercom-emoji-picker-emoji" (click)="pickedEmoji(emoji.emoji)" title="thumbs_up">{{emoji.emoji}}</span>
+  </span>
+</div>
+<!--
+<div class="intercom-emoji-picker-group" *ngIf="segment==6" >
+  <span class="" *ngFor="let emoji of emojis[0].flags">
+    <span class="intercom-emoji-picker-emoji" (click)="pickedEmoji(emoji.emoji)" title="thumbs_up">{{emoji.emoji}}</span>
+  </span>
+</div> -->
+
+<div class="intercom-emoji-picker-group" *ngIf="segment==7" >
+  <span class="" *ngFor="let emoji of emojis[0].travel">
+    <span class="intercom-emoji-picker-emoji" (click)="pickedEmoji(emoji.emoji)" title="thumbs_up">{{emoji.emoji}}</span>
+  </span>
+</div>
+
+<div class="intercom-emoji-picker-group" *ngIf="segment==8" >
+  <span class="" *ngFor="let emoji of emojis[0].symbols">
+    <span class="intercom-emoji-picker-emoji" (click)="pickedEmoji(emoji.emoji)" title="thumbs_up">{{emoji.emoji}}</span>
+  </span>
+</div>
+</div>
+
+</ion-content>

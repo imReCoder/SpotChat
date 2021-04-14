@@ -1,0 +1,129 @@
+<ion-header>
+<div class="user-bar" >
+  <div class="back">
+    <ion-buttons slot="start">
+      <ion-back-button  click="goBack()" text=""></ion-back-button>
+    </ion-buttons>
+  </div>
+  <div class="avatar" (click)="viewProfile(client)" >
+    <img src={{profileImg}} (load)="profileImgP=true" [hidden]="!profileImgP">
+    <img src="../assets/images/profile.png" [hidden]="profileImgP">
+
+  </div>
+  <div class="name" >
+    <ion-label>{{clientName}}</ion-label>
+    <span class="status" *ngIf="isActive">Online</span>
+
+    <span class="status" *ngIf="!isActive">Offline</span>
+
+
+  </div>
+  <div class="actions more">
+    <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+  </div>
+  <div class="actions attachment">
+    <i class="zmdi zmdi-attachment-alt"></i>
+  </div>
+  <div class="actions">
+    <i class="zmdi zmdi-phone"></i>
+  </div>
+</div>
+<!-- <ion-img [src]='imgPath'></ion-img> -->
+
+</ion-header>
+
+<!--
+<div id="chat-parent" class="bg-image" [ngClass]="{ 'bg-image-X': phone_model=='iPhone X'}">
+<div id="chat-container">
+<ion-row *ngFor="let conv of conversation; let i = index;" class="full no-padding">
+<ion-col class="no-padding chat-row" [ngClass]="{ 'reverse': conv.sender}">
+<div class="avatar-parent">
+<div class="avatar-border"></div>
+<img [src]="conv.image" class="avatar">
+</div>
+<div [ngClass]="{ 'name-row-parent-right': conv.sender,'name-row-parent-left': !conv.sender}">
+<div class="no-padding" [ngClass]="{ 'name-row-right': conv.sender,'name-row-left': !conv.sender}">
+{{conv.sender ? 'Martha': 'Shawn'}}
+<div [ngClass]="{ 'timer-right': conv.sender,'timer-left': !conv.sender}">{{conv.time}}
+<ion-icon *ngIf="conv.sender && conv.sent" name="checkmark" [color]="conv.read ? 'primary': 'light'"
+class="first-tick"></ion-icon>
+<ion-icon *ngIf="conv.sender && conv.delivered" name="checkmark" [color]="conv.read ? 'primary': 'light'"
+class="second-tick"></ion-icon>
+</div>
+<div [ngClass]="{ 'reverse-arc-right': conv.sender,'reverse-arc-left': !conv.sender}">
+<div [ngClass]="{ 'reverse-arc-color-right': conv.sender,'reverse-arc-color-left': !conv.sender}"></div>
+</div>
+</div>
+<div class="no-padding" [ngClass]="{ 'message-row-right': conv.sender,'message-row-left': !conv.sender}">
+<ion-text  class="text no-margin">{{conv.text}}</ion-text>
+</div>
+</div>
+
+</ion-col>
+</ion-row>
+</div>
+</div>
+
+
+-->
+<ion-content class="padding-vertical" (click)="closeEmojiPanel()" #content >
+
+
+<!-- <ion-button (click)='getVideo()'>Play</ion-button> -->
+ <!-- <video  controls="controls" preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline" class="videoPlayer">
+   <source [src]='vidPath' type="video/mp4" />
+  </video> -->
+  <div id="chat-parent" class="bg-image">
+    <div id="chat-container">
+      <ion-row *ngFor="let conv of conversation; let i = index;" class="full no-padding">
+        <ion-col class="no-padding chat-row" [ngClass]="{ 'reverse': conv.sender}">
+
+          <div [ngClass]="{ 'timer-right': conv.sender,'timer-left': !conv.sender}">
+            {{conv.time}}
+            <ion-icon *ngIf="!conv.sent && conv.sender" name="time-outline"></ion-icon>
+            <ion-icon *ngIf="conv.sender && conv.sent" name="checkmark" [color]="conv.read ? 'success': 'light'"
+            class="first-tick"></ion-icon>
+            <ion-icon *ngIf="conv.sender && conv.delivered" name="checkmark" [color]="conv.read ? 'success': 'light'"
+            class="second-tick"></ion-icon>
+          </div>
+
+          <div class="no-padding" [ngClass]="{ 'message-row-right': conv.sender,'message-row-left': !conv.sender}">
+            <ion-text  *ngIf="!conv.fileUri && !conv.fileUrl" class="text no-margin">{{conv.text}}</ion-text>
+            <!-- <ion-img  *ngIf="conv.sender && conv.fileUri" class="text no-margin imgSend" [src]='conv.fileUri'></ion-img>
+            <ion-img  *ngIf="!conv.sender && conv.fileUrl" class="text no-margin imgReceive" [src]='conv.fileUrl' (click)="presentModalViewImage(conv.fileUrl,conv.time)"></ion-img> -->
+            <!-- <video  *ngIf="!conv.sender && conv.fileUrl" controls="controls" preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline" class="videoPlayer">
+               <source [src]=conv.fileUrl type="video/mp4" />
+              </video> -->
+          </div>
+
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+</ion-content>
+
+
+  <ion-footer >
+<div class="conversation-compose">
+  <div class="emoji"  >
+    <ion-img  (click)="openEmojiPanel()" *ngIf="emojiPanel=='deactive'" src="./../assets/emoji.svg"></ion-img>
+
+      <ion-img *ngIf="emojiPanel=='active'" (click)="closeEmojiPanel()" class="keyboardSvg" src="./../assets/key.svg"></ion-img>
+</div>
+<ion-input class="input-msg" [(ngModel)]="input"  placeholder="Type a message" autocomplete="off" (click)="closeEmojiPanel()"   #inputText ></ion-input>
+ <!-- <ion-button slot="end" fill="clear" size="small" shape="round" class="photo" *ngIf="input.length==0" (click)="chooseFile()">
+  <ion-icon name="attach-outline" ></ion-icon>
+</ion-button> -->
+
+ <div slot="end" class="send" click="focusInput()">
+  <div class="circle">
+    <ion-button class="sendBtn" shape="round" tappable (click)="send(null)" color="default" fill="clear" >
+      <ion-icon name="send"></ion-icon>
+    </ion-button>
+  </div>
+</div>
+</div>
+
+<app-emoji  class="{{emojiPanel}}"></app-emoji>
+</ion-footer>
