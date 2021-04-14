@@ -5,7 +5,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 $data=array();
 
-$basic  = new \Nexmo\Client\Credentials\Basic('8f996372', 'AHSHab2prOO9quR5');
+$basic  = new \Nexmo\Client\Credentials\Basic('8f996372', 'AHSHab2prOO9quR5');  // replace it with your Nexmo sms credentials
 $client = new \Nexmo\Client(new \Nexmo\Client\Credentials\Container($basic));
 $verification = new \Nexmo\Verify\Verification($_GET['mobile'], 'SpotDoit');
 $client->verify()->start($verification);
