@@ -44,9 +44,9 @@ export class HomePage implements OnInit {
 delete=false;
 selectLength='';
 userData={
-  userPhone:"9099858434",
-  userName:'Ranjit',
-  userAbout:"hii iam Ranjit",
+  userPhone:"",
+  userName:'',
+  userAbout:"",
   userAvatar:""
 };
 chatDataLoading:boolean=true;
@@ -72,7 +72,6 @@ constructor(private server:ServerService,private eventsService:EventsService,
     var year = currentTime.getFullYear();
     this.todaysDate=day+" "+this.monthNames[Number(month)]+" "+year;
     //alert('gettig')
-    this.storage.set('userPhone',this.userData);
     this.storage.get('userPhone').then((data)=>{
         if(data){
       this.userData=data;
