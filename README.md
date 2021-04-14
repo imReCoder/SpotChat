@@ -1,5 +1,10 @@
 "# SpotChat - realtime Chatting App using Socket.io Node.js and Firebase" 
 
+<p float="left">
+  <img src="https://github.com/imRecoder/SpotChat/blob/main/screeshots/WhatsApp%20Image%202021-04-14%20at%201.23.00%20PM%20(1).jpeg" width="100" />
+  <img src="https://github.com/imRecoder/SpotChat/blob/main/screeshots/WhatsApp%20Image%202021-04-14%20at%201.23.00%20PM%20(1).jpeg" width="100" /> 
+  <img src="https://github.com/imRecoder/SpotChat/blob/main/screeshots/WhatsApp%20Image%202021-04-14%20at%201.23.00%20PM%20(1).jpeg" width="100" />
+</p>
 <details>
   <summary>The title of the image group</summary>
   <img src="https://github.com/imRecoder/SpotChat/blob/main/screeshots/WhatsApp%20Image%202021-04-14%20at%201.23.00%20PM%20(1).jpeg" name="image-name">
