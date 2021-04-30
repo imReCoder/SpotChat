@@ -28,5 +28,5 @@
 ## Create Nexmo Sms Account and replace credentials in nexmo otp verificatio files
 ## upload Nexmo sms configuration files to 000webhost server
 
-## Replace server links in main app  
+## Replace server links in main app   
 
